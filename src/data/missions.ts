@@ -1,0 +1,62 @@
+import type { Mission } from './types';
+
+export const missions: Mission[] = [
+  {
+    id: 'm1', name: 'אופק צפוני',
+    purpose: 'אבטחת ציר תנועה מרכזי בגזרה הצפונית ויצירת חופש פעולה לכוחות המתמרנים.',
+    status: 'active', statusLabel: 'פעיל', stage: 'ביצוע',
+    readiness: 82,
+    ownerId: 'u1', participantIds: ['u1', 'u2', 'u3'],
+    lastUpdated: '2026-07-22T07:40:00', timelineStart: '2026-07-20T06:00:00', timelineEnd: '2026-07-27T18:00:00',
+    dueDate: '2026-07-23T12:00:00', riskLevel: 'medium',
+    blockersCount: 1, openApprovalsCount: 1, atRiskResourcesCount: 1, sector: 'צפון',
+    dependsOnMissionIds: [], blockedByMissionIds: [],
+    evidenceIds: ['e1', 'e2', 'e6'], directiveIds: ['d1'], coord: { x: 30, y: 24 },
+  },
+  {
+    id: 'm2', name: 'מגן מזרחי',
+    purpose: 'הקמת הגנה שכבתית באזור התפר המזרחי ותיאום מול הכוחות השכנים.',
+    status: 'planned', statusLabel: 'בתכנון', stage: 'תכנון',
+    readiness: 74, ownerId: 'u5', participantIds: ['u2', 'u4', 'u5'],
+    lastUpdated: '2026-07-21T16:10:00', timelineStart: '2026-07-25T06:00:00', timelineEnd: '2026-08-02T18:00:00',
+    dueDate: '2026-07-28T09:00:00', riskLevel: 'medium',
+    blockersCount: 1, openApprovalsCount: 1, atRiskResourcesCount: 1, sector: 'מזרח',
+    dependsOnMissionIds: [], blockedByMissionIds: [],
+    evidenceIds: ['e3'], directiveIds: ['d2', 'd4'], coord: { x: 78, y: 46 },
+  },
+  {
+    id: 'm3', name: 'קו אדום',
+    purpose: 'שמירת רצף מודיעיני ובקרה על קווי התיאום לתקיפה באזור הפעילות.',
+    status: 'active', statusLabel: 'פעיל', stage: 'ביצוע',
+    readiness: 88, ownerId: 'u1', participantIds: ['u1', 'u3'],
+    lastUpdated: '2026-07-22T06:05:00', timelineStart: '2026-07-15T06:00:00', timelineEnd: '2026-08-15T18:00:00',
+    dueDate: '2026-08-01T12:00:00', riskLevel: 'low',
+    blockersCount: 0, openApprovalsCount: 0, atRiskResourcesCount: 0, sector: 'צפון',
+    dependsOnMissionIds: [], blockedByMissionIds: [],
+    evidenceIds: ['e1'], directiveIds: ['d1'], coord: { x: 52, y: 18 },
+  },
+  {
+    id: 'm4', name: 'שחר בטוח',
+    purpose: 'ליווי ואבטחת תנועת אוכלוסייה בציר משני לקראת אירוע מתוכנן.',
+    status: 'planned', statusLabel: 'בתכנון', stage: 'אישורים',
+    readiness: 55, ownerId: 'u2', participantIds: ['u2', 'u3'],
+    lastUpdated: '2026-07-21T20:30:00', timelineStart: '2026-07-24T05:00:00', timelineEnd: '2026-07-24T20:00:00',
+    dueDate: '2026-07-22T18:00:00', riskLevel: 'high',
+    blockersCount: 2, openApprovalsCount: 2, atRiskResourcesCount: 0, sector: 'מרכז',
+    dependsOnMissionIds: [], blockedByMissionIds: ['m1'],
+    evidenceIds: ['e4'], directiveIds: ['d2'], coord: { x: 50, y: 54 },
+  },
+  {
+    id: 'm5', name: 'גשר דרומי',
+    purpose: 'תחזוקת ציר אספקה דרומי והבטחת רציפות לוגיסטית לכוחות בשטח.',
+    status: 'paused', statusLabel: 'מוקפא', stage: 'מוקפא',
+    readiness: 40, ownerId: 'u4', participantIds: ['u4', 'u5'],
+    lastUpdated: '2026-07-19T11:15:00', timelineStart: '2026-07-18T06:00:00', timelineEnd: '2026-08-05T18:00:00',
+    dueDate: '2026-08-01T09:00:00', riskLevel: 'medium',
+    blockersCount: 3, openApprovalsCount: 1, atRiskResourcesCount: 1, sector: 'דרום',
+    dependsOnMissionIds: [], blockedByMissionIds: [],
+    evidenceIds: ['e5'], directiveIds: ['d3', 'd4'], coord: { x: 40, y: 82 },
+  },
+];
+
+export const getMission = (id: string) => missions.find(m => m.id === id);

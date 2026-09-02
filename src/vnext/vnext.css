@@ -1,0 +1,173 @@
+/* Commander Space vNext — Prototype 01
+   Scoped styles (cs- prefix). Reuses the design tokens from index.css (colors, Rubik font,
+   RTL) but deliberately does NOT reuse the legacy app-shell / sidebar / dashboard layout.
+   Visual intent: calm · sparse · decision-first · high signal / low noise. Materiality is
+   expressed through hierarchy and space, not through decorative density or "everything is red". */
+
+.cs-root {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-wrap {
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 34px 26px 96px;
+  flex: 1;
+}
+
+/* Slim top line — identity is illustrative only, deliberately understated (no command-center chrome). */
+.cs-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.cs-brand { font-size: 16px; font-weight: 800; color: var(--ink-soft); letter-spacing: .01em; }
+.cs-brand small { font-weight: 600; color: var(--muted-soft); margin-inline-start: 8px; font-size: 12.5px; }
+.cs-who { font-size: 12.5px; color: var(--muted); }
+.cs-who b { color: var(--ink-soft); font-weight: 700; }
+
+/* The organizing question. */
+.cs-head { margin-bottom: 8px; }
+.cs-eyebrow { font-size: 11px; font-weight: 800; color: var(--teal); text-transform: uppercase; letter-spacing: .09em; margin-bottom: 8px; }
+.cs-question { font-size: 27px; font-weight: 800; color: var(--ink-soft); line-height: 1.2; }
+.cs-sub { color: var(--muted); font-size: 14.5px; line-height: 1.55; margin-top: 8px; max-width: 640px; }
+
+/* Quiet attention-budget line — a sense of scope, never a feed. */
+.cs-budget { font-size: 13px; color: var(--muted); margin: 22px 2px 14px; display: flex; align-items: center; gap: 8px; }
+.cs-budget .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--muted-soft); }
+
+/* ---- Attention item: shared ---- */
+.cs-item { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.cs-forms { display: flex; gap: 6px; flex-wrap: wrap; }
+.cs-formtag {
+  font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 999px;
+  border: 1px solid var(--line); color: var(--muted); background: var(--surface-soft);
+}
+.cs-formtag.awareness { color: var(--blue); background: var(--blue-soft); border-color: transparent; }
+.cs-formtag.action    { color: var(--teal); background: var(--teal-soft); border-color: transparent; }
+.cs-formtag.decision  { color: var(--purple); background: var(--purple-soft); border-color: transparent; }
+.cs-formtag.approval  { color: var(--amber); background: var(--amber-soft); border-color: transparent; }
+
+/* ---- Dominant (flagship) ---- */
+.cs-flagship {
+  padding: 26px 28px;
+  border-inline-start: 3px solid var(--blue);
+  box-shadow: var(--shadow);
+  margin-bottom: 26px;
+}
+/* Peer mode (HIERARCHY_MODE = 'peers') neutralizes the dominant emphasis — the switch we validate. */
+.cs-flagship-flat { border-inline-start-width: 1px; border-inline-start-color: var(--line); box-shadow: none; padding: 20px 22px; }
+.cs-flagship-flat .cs-headline { font-size: 17px; }
+
+.cs-flagship .cs-headline { font-size: 21px; font-weight: 800; color: var(--ink-soft); line-height: 1.32; margin: 14px 0 10px; }
+.cs-flagship .cs-matters { font-size: 15px; color: var(--ink); line-height: 1.55; }
+.cs-relevance { font-size: 13.5px; color: var(--muted); margin-top: 8px; display: flex; align-items: center; gap: 7px; }
+.cs-relevance .who-pill { color: var(--ink-soft); font-weight: 700; }
+
+/* Consequence framing — calm, not alarmist. */
+.cs-consequence {
+  margin-top: 16px; padding: 12px 14px; border-radius: var(--radius-sm);
+  background: var(--surface-soft); border: 1px solid var(--line);
+  font-size: 14px; color: var(--ink-soft); line-height: 1.5;
+}
+.cs-consequence b { font-weight: 700; }
+
+/* Actions */
+.cs-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+.cs-btn {
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink-soft);
+  border-radius: var(--radius-sm); padding: 10px 16px; font-weight: 700; font-size: 14px; cursor: pointer;
+  transition: background .12s, border-color .12s;
+}
+.cs-btn:hover { background: var(--surface-soft); }
+.cs-btn.primary { background: var(--blue); border-color: var(--blue); color: #fff; }
+.cs-btn.primary:hover { background: #1a437c; }
+.cs-btn.ghost { background: transparent; }
+.cs-btn.link { border: none; background: none; color: var(--blue); padding: 8px 2px; font-weight: 700; }
+.cs-btn.link:hover { text-decoration: underline; background: none; }
+
+/* Expander (understand / basis) */
+.cs-expander { margin-top: 18px; border-top: 1px solid var(--line); padding-top: 16px; }
+.cs-disclosure-btn {
+  border: none; background: none; color: var(--blue); font-weight: 700; font-size: 13.5px; cursor: pointer; padding: 0;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.cs-disclosure-btn:hover { text-decoration: underline; }
+
+.cs-understand { margin-top: 14px; }
+.cs-row { padding: 11px 0; border-bottom: 1px dashed var(--line); }
+.cs-row:last-child { border-bottom: none; }
+.cs-row .k { font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; color: var(--muted-soft); margin-bottom: 3px; }
+.cs-row .v { font-size: 14px; color: var(--ink); line-height: 1.5; }
+.cs-unknowns { margin-top: 4px; }
+.cs-unknowns li { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+
+/* Decision-support: no-recommendation vs insufficient-evidence must be visibly distinct. */
+.cs-support { margin-top: 16px; border-radius: var(--radius-sm); padding: 13px 15px; }
+.cs-support .label { font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 5px; }
+.cs-support .body { font-size: 13.5px; line-height: 1.55; }
+.cs-support.norec { background: var(--surface-soft); border: 1px solid var(--line); }
+.cs-support.norec .label { color: var(--muted); }
+.cs-support.norec .body { color: var(--ink); }
+.cs-support.insufficient { background: var(--amber-soft); border: 1px solid #f0dcb4; }
+.cs-support.insufficient .label { color: var(--amber); }
+.cs-support.insufficient .body { color: #6b4a08; }
+
+/* Evidence / depth */
+.cs-evidence { margin-top: 14px; }
+.cs-ev { padding: 12px 0; border-bottom: 1px solid var(--line); }
+.cs-ev:last-child { border-bottom: none; }
+.cs-ev-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.cs-ev-label { font-size: 13.5px; font-weight: 700; color: var(--ink-soft); line-height: 1.4; }
+.cs-ev-kind { font-size: 10.5px; font-weight: 800; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.cs-ev-kind.fact { color: var(--green); background: var(--green-soft); }
+.cs-ev-kind.synthesized { color: var(--purple); background: var(--purple-soft); }
+.cs-ev-kind.unverified { color: var(--amber); background: var(--amber-soft); }
+.cs-ev-meta { font-size: 12px; color: var(--muted); margin-top: 5px; line-height: 1.55; }
+.cs-ev-meta .sep { margin: 0 7px; color: var(--muted-soft); }
+.cs-ev-note { font-size: 12px; color: var(--muted-soft); margin-top: 3px; font-style: italic; }
+
+/* Follow-up (post-action) */
+.cs-followup { margin-top: 16px; padding: 14px 16px; border-radius: var(--radius-sm); background: var(--teal-soft); border: 1px solid #cdeae6; }
+.cs-followup .fu-title { font-weight: 800; color: #0c5f57; font-size: 14px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.cs-followup .fu-line { font-size: 13.5px; color: #17403c; line-height: 1.6; }
+.cs-followup .fu-line b { font-weight: 700; }
+.cs-owner-pill { display: inline-block; font-size: 12px; font-weight: 700; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 2px 9px; }
+
+/* ---- Secondary items ---- */
+.cs-secondary-label { font-size: 12px; font-weight: 700; color: var(--muted-soft); text-transform: uppercase; letter-spacing: .06em; margin: 6px 2px 12px; }
+.cs-secondary { padding: 16px 18px; margin-bottom: 12px; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.cs-secondary .s-main { min-width: 0; }
+.cs-secondary .s-headline { font-size: 15px; font-weight: 700; color: var(--ink-soft); line-height: 1.4; margin: 8px 0 5px; }
+.cs-secondary .s-why { font-size: 13px; color: var(--muted); line-height: 1.5; }
+.cs-secondary .s-side { display: flex; flex-direction: column; gap: 8px; align-items: stretch; flex-shrink: 0; }
+.cs-secondary.resolved { opacity: .62; }
+.cs-resolved-tag { font-size: 12px; color: var(--green); font-weight: 700; }
+
+/* Continuity banner (next visit) */
+.cs-since { background: var(--surface); border: 1px solid var(--line); border-inline-start: 3px solid var(--teal); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 26px; }
+.cs-since .since-eyebrow { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .07em; color: var(--teal); margin-bottom: 8px; }
+.cs-since .since-line { font-size: 14px; color: var(--ink); line-height: 1.6; }
+.cs-since .since-line + .since-line { margin-top: 6px; }
+.cs-since .since-line b { color: var(--ink-soft); font-weight: 700; }
+
+/* Empty state — reassuring, not "missing data". */
+.cs-empty { text-align: center; padding: 72px 24px; }
+.cs-empty .mark { width: 52px; height: 52px; border-radius: 50%; background: var(--green-soft); color: var(--green); display: inline-flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 18px; }
+.cs-empty .e-title { font-size: 20px; font-weight: 800; color: var(--ink-soft); margin-bottom: 8px; }
+.cs-empty .e-sub { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 440px; margin: 0 auto; }
+
+/* Prototype scaffold — explicitly a testing control, not product chrome. */
+.cs-scaffold { border-top: 1px dashed var(--line); background: var(--surface); }
+.cs-scaffold-inner { max-width: 820px; margin: 0 auto; padding: 12px 26px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.cs-scaffold .sc-label { font-size: 11px; font-weight: 800; color: var(--muted-soft); text-transform: uppercase; letter-spacing: .05em; }
+.cs-scaffold .sc-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+.cs-scaffold .sc-btn { font-size: 12px; font-weight: 600; padding: 5px 11px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); cursor: pointer; }
+.cs-scaffold .sc-btn.active { background: var(--ink-soft); color: #fff; border-color: var(--ink-soft); }
+.cs-scaffold .sc-note { font-size: 11px; color: var(--muted-soft); margin-inline-start: auto; }
